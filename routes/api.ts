@@ -1,8 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
+import { UserController } from '../controllers/user.controller';
 
 
 
 let route = express.Router();
+const user_controller = new UserController();
 
 
 
@@ -10,9 +12,10 @@ let route = express.Router();
 route.get('/', function (req, res) {
     res.send('Wiki home page');
 });
+route.get('/users',user_controller.getUsers);
   
 
-route.get('/users',)
+
 
 
 // Export the router
