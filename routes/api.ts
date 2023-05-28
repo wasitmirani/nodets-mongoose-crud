@@ -13,6 +13,7 @@ route.get('/', function (req, res) {
     res.send('Wiki home page');
 });
 route.get('/users',user_controller.getUsers);
+route.post('/user',user_controller.create);
   
 
 
