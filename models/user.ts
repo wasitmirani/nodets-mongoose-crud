@@ -16,6 +16,7 @@ export class  User {
     
      async allUsers(): Promise<IUser[]> {
         const users = await this.UserModel.find();
+        console.log("users: ",users);
         if(users.length>0)
             return users;
         return null;
