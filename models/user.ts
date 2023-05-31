@@ -21,6 +21,15 @@ export class User {
             return users;
         return null;
     }
+    async delete(uid:string){
+            const   result=await this.UserModel.deleteOne({ uid: uid })
+            if (result.deletedCount === 0) {
+                return { status: false };
+            } else {
+                return {  status: true };
+            }
+
+    }
     async  checkUser(email:string)  {
         try {
           const foundUser = await this.UserModel.findOne({ email: email });
@@ -34,9 +43,6 @@ export class User {
         }
       }
     store = async (user: IUser) => {   //store user in db.  returns the user object.  returns null if there is an error.
-        
-       
-        
         const newUser = new this.UserModel({
             name: user.name,
             uid: user.uid,

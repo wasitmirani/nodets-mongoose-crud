@@ -14,6 +14,7 @@ route.get('/', function (req, res) {
 });
 route.get('/users',user_controller.getUsers);
 route.post('/user',user_controller.create);
+route.delete('/user/:uid',user_controller.destroy);
   
 
 

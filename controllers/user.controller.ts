@@ -17,7 +17,14 @@ export class UserController {
       res.status(500).json({ error: 'Internal server error' });
     }
   }
-
+  async destroy(req: Request, res: Response,next: NextFunction): Promise<Response | any> {
+     const user=await  user_.delete(req.params.uid);
+     console.log(req.params.uid);
+    //  if(!user.status)
+     return res.status(404).json({ 'message':'User not found',status:false }); //
+     
+     return res.status(200).json({ 'message':'User delete successfully',status:true });
+  }
   async create(req: Request, res: Response, next: NextFunction): Promise<Response | any> {
     try {
        
