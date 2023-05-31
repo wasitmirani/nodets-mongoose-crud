@@ -32,10 +32,9 @@ export class App {
         this.app.use(bodyParser.json());
     }
     private apiRoutes(){
+        this.app.use('/api',apiRouter);
         this.app.use(express.json());
         this.app.use(bodyParser.json());
-        this.app.use('/api',apiRouter);
-      
     }
   
 
