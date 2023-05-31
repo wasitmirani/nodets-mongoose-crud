@@ -21,8 +21,22 @@ export class User {
             return users;
         return null;
     }
-
+    async  checkUser(email:string)  {
+        try {
+          const foundUser = await this.UserModel.findOne({ email: email });
+          if (foundUser?.email) {
+            return { user: foundUser, status: false };
+          }
+          return { user: null, status: true };
+        } catch (error) {
+          console.error("Error:", error);
+          throw error;
+        }
+      }
     store = async (user: IUser) => {   //store user in db.  returns the user object.  returns null if there is an error.
+        
+       
+        
         const newUser = new this.UserModel({
             name: user.name,
             uid: user.uid,
@@ -33,7 +47,6 @@ export class User {
         });
         const savedUser = await newUser.save();
         return savedUser;
-
     }
 
 
